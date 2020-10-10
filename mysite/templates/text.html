@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container .btn {
+  position: absolute;
+  top:90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #f1f1f1;
+  color: black;
+  font-size: 16px;
+  padding: 16px 30px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.container .btn:hover {
+  background-color: black;
+  color: white;
+}
+
+    </style>
+</head>
+<body style="background-image: linear-gradient(to right,indigo,violet);">
+<h1> The Text Extracted:</h1>
+ <textarea style="margin: 0px; width: 1524px; height: 312px;"> {{ value.content }} </textarea>
+<form action="nb_news" method="post">
+    {% csrf_token %}
+    <h1>From Url:</h1>
+    <input type="url" value={{value.httpurl}} name="Url" style="width:100%; height:30px;font-size:25px">
+    <div class="container">
+            <button class="btn" type="Submit">Classify</button>
+        </div>
+    </form>
+</body>
+</html>

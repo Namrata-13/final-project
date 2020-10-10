@@ -1,0 +1,70 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <style>
+
+div {
+  height: 1500px;
+  width: 100%;
+  margin: 20px;
+  padding: 40px;
+
+}
+.content {
+  max-width: 500px;
+  margin: auto;
+}
+.container .btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #f1f1f1;
+  color: black;
+  font-size: 16px;
+  padding: 16px 30px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.container .btn:hover {
+  background-color: black;
+  color: white;
+}
+
+</style>
+</head>
+
+<body style="background-image: linear-gradient(to right,indigo,violet);">
+<div >
+    <center>
+<form action="extract" method="post">
+        {% csrf_token %}
+    <center>
+        <marquee width=50% ><h1>Text Classifier</h1></marquee>
+        <br>
+        <h2>Enter The Url</h2>
+        <input type="url" name="Url" style="width:80%; height:30px;font-size:25px">
+        <br><br>
+        <div class="container">
+            <button class="btn" type="Submit">Submit</button>
+        </div>
+    </center>
+</form>
+    </center>
+
+
+
+
+    </div>
+
+</body>
+
+</html>
