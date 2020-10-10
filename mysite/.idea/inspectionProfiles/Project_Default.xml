@@ -5,6 +5,7 @@
       <option name="ignoredIdentifiers">
         <list>
           <option value="str.__or__" />
+          <option value="sklearn.metrics.plot_confusion_matrix" />
         </list>
       </option>
     </inspection_tool>

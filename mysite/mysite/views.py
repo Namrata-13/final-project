@@ -2,7 +2,7 @@
 
 from django.shortcuts import render
 from boilerpy3 import extractors
-from matplotlib.pyplot import plot
+import matplotlib.pyplot as plt
 from sklearn import metrics
 
 from sklearn.datasets import fetch_20newsgroups
@@ -10,9 +10,9 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.pipeline import Pipeline
+
 from sklearn.linear_model import SGDClassifier
 import numpy as np
-
 
 
 def index(request):
@@ -24,7 +24,7 @@ def extract(request):
     httpurl = request.POST.get('Url')
     doc = extractor.get_doc_from_url(httpurl)
     content = doc.content
-    print(content)
+    print(content)-
     file = open("output.txt", "w+")
     file.write(content)
     file.close()
@@ -64,14 +64,14 @@ def nb_news(request):
     predicted = text_clf.predict(docs_test)
     np.mean(predicted == twenty_test.target)
 
-    text_clf = Pipeline([('vect', CountVectorizer()),
+    '''text_clf = Pipeline([('vect', CountVectorizer()),
                          ('tfidf', TfidfTransformer()),
                          ('clf', SGDClassifier(loss='hinge', penalty='l2',
                                                alpha=1e-3,
                                                max_iter=5, tol=None)),
                          ])
                            
-    text_clf.fit(twenty_train.data, twenty_train.target)
+    text_clf.fit(twenty_train.data, twenty_train.target)'''
     f = open("output.txt", "r")
     if f.mode == 'r':
         docs_new = [f.read()]
@@ -83,11 +83,11 @@ def nb_news(request):
     if 'talk' in value:
         bloc = "you cannot access this url"
     else:
-        bloc = myurl
+        bloc= myurl
     predicted = text_clf.predict(docs_test)
     score = np.mean(predicted == twenty_test.target)
     print(metrics.classification_report(twenty_test.target, predicted,target_names = twenty_test.target_names))
-    plot(metrics.confusion_matrix(twenty_test.target, predicted))
+    print(metrics.confusion_matrix(twenty_test.target, predicted))
     classified_cat = {'category': value, 'acc': score, 'block': bloc}
     context = {
         'classified_cat': classified_cat,
